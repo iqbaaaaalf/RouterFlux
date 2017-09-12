@@ -5,7 +5,7 @@ import {
     View
   } from 'react-native';
 
-  export default class About extends Component{
+  export default class QuestionDetail extends Component{
       
     renderHeader(){
         const {title} = this.props;
@@ -25,7 +25,7 @@ import {
                 {this.renderHeader()}
                 <Content style={styles.container}>
                    <Text style={styles.welcome}>
-                       RouterFlux v0.2
+                       Question Detail Page
                     </Text>
                 </Content>
             </Container>
@@ -33,6 +33,7 @@ import {
       }
   }
 
+  
   const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -46,3 +47,4 @@ import {
         margin: 10,
     },
   });
+
