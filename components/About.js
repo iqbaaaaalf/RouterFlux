@@ -23,7 +23,7 @@ import {
           return(
             <Container>
                 {this.renderHeader()}
-                <Content style={styles.container}>
+                <Content>
                    <Text style={styles.welcome}>
                        RouterFlux v0.2
                     </Text>
@@ -34,12 +34,6 @@ import {
   }
 
   const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
     welcome:{
         fontSize: 20,
         textAlign: 'center',

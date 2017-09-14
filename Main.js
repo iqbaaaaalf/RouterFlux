@@ -11,6 +11,7 @@ import {Icon} from 'native-base';
 import About from './components/About';
 import Question from './components/Question';
 import QuestionDetail from './components/QuestionDetail';
+import {QuestionStore} from './stores';
 
 class TabIcon extends Component{
   render(){
@@ -34,7 +35,7 @@ class TabIcon extends Component{
         <Scene key="root" tabs={true}>
           <Scene key="menus">
             <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor:'#f7f7f7'}}>
-              <Scene key="Questions" component={Question} title="Questions" icon={TabIcon} hideNavBar={true}/>
+              <Scene key="Questions" store={QuestionStore} component={Question} title="Questions" icon={TabIcon} hideNavBar={true}/>
               <Scene key="About" component={About} title="About" icon={TabIcon} hideNavBar={true}/>
             </Scene>
             <Scene key="QuestionDetail" component={QuestionDetail} title="Question Detail" hideNavBar={true}/>

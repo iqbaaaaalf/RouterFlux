@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import { Container, Button, Content, Left, Body, Right, ListItem, Text, Icon, Header, Title } from 'native-base';
 import {ListView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import {observer} from 'mobx-react/native';
 
 
+@observer
   export default class Question extends Component{
       constructor(props){
           super(props);
-          const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2 });
-          this.questions = [
-            {title : "First Question", author: "Iqbal"},
-            {title : "Second Question", author: "Fakhri"},
-            {title : "Third Question", author: "Hendri"},
-          ];
+      }
 
-          this.state = {
-            dataSource: ds.cloneWithRows(this.questions)
-          }
+      handleAdd(){
+          const doc={
+            title : "Fift Question", author: "Rika", vote: 24, description: "desc 5", createdAt: new Date("2007-01-09")
+          };
+          this.props.store.add(doc);
       }
 
       renderHeader(){
@@ -24,9 +23,15 @@ import {Actions} from 'react-native-router-flux';
 
           return(
             <Header style={{backgroundColor: "#66ccff"}} androidStatusBarColor='#33bbff'>
+                <Left/>
                 <Body>
                     <Title style={{color: "white" }}> {title} </Title>
                 </Body>
+                <Right>
+                    <Button transparent onPress={() => this.handleAdd()}>
+                        <Icon name="add-circle" style={{color: "white"}}/>
+                    </Button>
+                </Right>
             </Header>
           )
       }
@@ -47,12 +52,13 @@ import {Actions} from 'react-native-router-flux';
       }
    
       render(){
+          const {dataSource} = this.props.store;
           return(
             <Container>
                 {this.renderHeader()}
                 <Content>
                     <ListView
-                        dataSource={this.state.dataSource}
+                        dataSource={dataSource}
                         renderRow = {this.renderRow.bind(this)}
                     />
                 </Content>
