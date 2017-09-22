@@ -11,6 +11,9 @@ import {Icon} from 'native-base';
 import About from './components/About';
 import Question from './components/Question';
 import QuestionDetail from './components/QuestionDetail';
+import QuestionAdd from './components/QuestionAdd';
+import AnswerAdd from './components/AnswerAdd';
+
 import {QuestionStore} from './stores';
 
 class TabIcon extends Component{
@@ -38,7 +41,9 @@ class TabIcon extends Component{
               <Scene key="Questions" store={QuestionStore} component={Question} title="Questions" icon={TabIcon} hideNavBar={true}/>
               <Scene key="About" component={About} title="About" icon={TabIcon} hideNavBar={true}/>
             </Scene>
-            <Scene key="QuestionDetail" component={QuestionDetail} title="Question Detail" hideNavBar={true}/>
+            <Scene key="QuestionDetail" store={QuestionStore} component={QuestionDetail} title="Question Detail" hideNavBar={true}/>
+            <Scene key="QuestionAdd" store={QuestionStore} component={QuestionAdd} title="Add a Question" hideNavBar={true}/>
+            <Scene key="AnswerAdd" store={QuestionStore} component={AnswerAdd} title="Add an Answer" hideNavBar={true}/>
           </Scene>
         </Scene>
       );
